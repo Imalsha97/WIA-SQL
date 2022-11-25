@@ -1,0 +1,49 @@
+-i-
+create table h_employee(
+E# number,
+Ename varchar2(10),
+salary number,
+bdate date,
+d# number
+);
+
+create table h_department(
+d# number,
+dname varchar2 (10),
+mgremp# number,
+location varchar2(100)
+);
+
+create table h_dependant
+(
+e# number,
+dependantname varchar2(100)
+);
+
+
+-i-
+select ename from h_employee he,h_dependant hd
+where he.e# = hd.e#
+And hd.e#>=1;
+
+-ii-
+select ename from h_employee he, h_department hd
+where he.d# = hd.d#
+And hd.dname = 'research';
+
+-iii-
+select * from h_employee
+where salary > (select avg(salary)from h_employee);
+
+-iv-
+update h_employee  set salary = salary+(salary*10/100);
+
+
+-v-
+select ename from h_employee he, h_department hd
+where he.d# = hd.d#
+And hd.location = 'Delhi';
+
+-vi-
+update h_department set location = 'Mumbai'
+where location = 'Bombay';

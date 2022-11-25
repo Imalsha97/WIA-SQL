@@ -1,0 +1,41 @@
+create table Hima_customer(
+c# varchar2(100),
+cname varchar2(100),
+address varchar2(100),
+primary key (c#)
+);
+
+create table Hima_item(
+i# varchar2(10),
+iname varchar2(10),
+price number,
+weighr number,
+primary key (i#)
+);
+
+create table Hima_order(
+o# varchar2(100),
+c# varchar2(100),
+i# varchar2(100),
+quantity number,
+primary key (o#)
+);
+
+-i-
+select cname 
+from Hima_customer hc, Hima_item hi, Hima_order ho
+where ho.c# = hc.c#
+And ho.i# = hi.i#
+And hi.weighr>1000;
+
+-ii-
+select cname from Hima_customer hc, Hima_item hi, Hima_order ho
+where ho.c# = hc.c#
+And ho.i# = hi.i#
+And hi.price>500; 
+
+-iii-
+create view orders
+select o.o#,sum(i.price) 
+from Item i,Order o 
+where i.I# = o.i#
